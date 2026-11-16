@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Halaman Menu Utama
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
@@ -84,6 +85,7 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
+// Kartu Informasi (menampilkan judul dan isi: NPM, Name, Class)
 class InfoCard extends StatelessWidget {
   // Kartu informasi yang menampilkan judul (title) dan isi (content).
   final String title;
@@ -116,6 +118,7 @@ class InfoCard extends StatelessWidget {
   }
 }
 
+// Model Data Menu (menyimpan nama dan ikon untuk satu tombol menu)
 class ItemHomepage {
   final String name;
   final IconData icon;
@@ -123,6 +126,7 @@ class ItemHomepage {
   ItemHomepage(this.name, this.icon);
 }
 
+// Kartu Tombol Menu (menampilkan ikon dan nama menu, bisa ditekan)
 class ItemCard extends StatelessWidget {
   final ItemHomepage item;
 
