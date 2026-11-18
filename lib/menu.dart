@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:myportofolio_mobile/widgets/left_drawer.dart';
+import 'package:myportofolio_mobile/project_form.dart';
 
 // Halaman Menu Utama
 class MyHomePage extends StatelessWidget {
@@ -28,7 +30,10 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+
+      drawer: const LeftDrawer(),
       // Body halaman utama dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -148,6 +153,15 @@ class ItemCard extends StatelessWidget {
             ..showSnackBar(
               SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
             );
+
+          
+          // Navigate ke halaman yang sesuai
+          if (item.name == "Tambah Proyek") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ProjectFormPage()),
+            );
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(8),
