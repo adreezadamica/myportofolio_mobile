@@ -79,7 +79,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     labelText: "Organisasi / Tempat Kegiatan",
-                    hintText: "Contoh: BEM Fasilkom UI",
+                    hintText: "Contoh: RISTEK Fasilkom UI",
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   onChanged: (v) => setState(() => _organization = v),
@@ -113,7 +113,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 child: TextFormField(
                   decoration: InputDecoration(
                     labelText: "Jabatan",
-                    hintText: "Contoh: Staf Divisi Teknologi",
+                    hintText: "Contoh: Lead of NetSOS",
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   onChanged: (v) => setState(() => _role = v),
@@ -182,6 +182,52 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   },
                 ),
               ),
+            
+              // Tombol Simpan
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all(Colors.indigo),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: const Text('Pengalaman berhasil ditambahkan!'),
+                            content: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Organisasi: $_organization'),
+                                  Text('Jenis: $_type'),
+                                  Text('Jabatan: $_role'),
+                                  Text('Mulai: ${_fmt(_startDate!)}'),
+                                  Text('Selesai: ${_fmt(_endDate!)}'),
+                                  Text('Deskripsi: $_description'),
+                                ],
+                              ),
+                            ),
+                            actions: [
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () => Navigator.pop(context),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                    },
+                    child: const Text(
+                      "Simpan",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),  
             ],           
           )
         ),
