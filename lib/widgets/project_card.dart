@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
+import 'package:myportofolio_mobile/screens/experience_form.dart';
 
 // Kartu Tombol Menu (menampilkan ikon dan nama menu, bisa ditekan)
 class ItemCard extends StatelessWidget {
@@ -31,8 +32,14 @@ class ItemCard extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (context) => const ProjectFormPage()),
             );
+          } else if (item.name == "Tambah Pengalaman") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ExperienceFormPage()),
+            );
           }
         },
+        
         child: Container(
           padding: const EdgeInsets.all(8),
           child: Center(
