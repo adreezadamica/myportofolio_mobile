@@ -31,7 +31,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
         title: const Center(
           child: Text('Add Project Form'),
         ),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
       ),
       drawer: const LeftDrawer(),
