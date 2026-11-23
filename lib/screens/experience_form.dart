@@ -83,6 +83,11 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   onChanged: (v) => setState(() => _organization = v),
+                  validator: (v) {
+                    if (v == null || v.trim().isEmpty) return "Organisasi tidak boleh kosong!";
+                    if (v.trim().length > 100) return "Maksimal 100 karakter!";
+                    return null;
+                  },
                 ),
               ),
 
@@ -112,6 +117,11 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   onChanged: (v) => setState(() => _role = v),
+                  validator: (v) {
+                    if (v == null || v.trim().isEmpty) return "Jabatan tidak boleh kosong!";
+                    if (v.trim().length > 100) return "Maksimal 100 karakter!";
+                    return null;
+                  },
                 ),
               ),
 
@@ -127,6 +137,8 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   onTap: () => _pickDate(isStart: true),
+                  validator: (v) =>
+                      (v == null || v.isEmpty) ? "Tanggal mulai wajib dipilih!" : null,
                 ),
               ),
 
@@ -142,6 +154,13 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   onTap: () => _pickDate(isStart: false),
+                  validator: (v) {
+                    if (v == null || v.isEmpty) return "Tanggal selesai wajib dipilih!";
+                    if (_startDate != null && _endDate != null && _endDate!.isBefore(_startDate!)) {
+                      return "Tanggal selesai tidak boleh sebelum tanggal mulai!";
+                    }
+                    return null;
+                  },
                 ),
               ),
 
@@ -156,6 +175,11 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   onChanged: (v) => setState(() => _description = v),
+                  validator: (v) {
+                    if (v == null || v.trim().isEmpty) return "Deskripsi tugas tidak boleh kosong!";
+                    if (v.trim().length > 500) return "Maksimal 500 karakter!";
+                    return null;
+                  },
                 ),
               ),
             ],           
