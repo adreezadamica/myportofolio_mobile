@@ -80,11 +80,15 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   decoration: InputDecoration(
                     labelText: "Organisasi / Tempat Kegiatan",
                     hintText: "Contoh: RISTEK Fasilkom UI",
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
                   onChanged: (v) => setState(() => _organization = v),
                   validator: (v) {
-                    if (v == null || v.trim().isEmpty) return "Organisasi tidak boleh kosong!";
+                    if (v == null || v.trim().isEmpty) {
+                      return "Organisasi tidak boleh kosong!";
+                    }
                     if (v.trim().length > 100) return "Maksimal 100 karakter!";
                     return null;
                   },
@@ -97,7 +101,9 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 child: DropdownButtonFormField<String>(
                   decoration: InputDecoration(
                     labelText: "Jenis Kegiatan",
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
                   initialValue: _type,
                   items: _types
@@ -114,11 +120,15 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   decoration: InputDecoration(
                     labelText: "Jabatan",
                     hintText: "Contoh: Lead of NetSOS",
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
                   onChanged: (v) => setState(() => _role = v),
                   validator: (v) {
-                    if (v == null || v.trim().isEmpty) return "Jabatan tidak boleh kosong!";
+                    if (v == null || v.trim().isEmpty) {
+                      return "Jabatan tidak boleh kosong!";
+                    }
                     if (v.trim().length > 100) return "Maksimal 100 karakter!";
                     return null;
                   },
@@ -134,11 +144,14 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   decoration: InputDecoration(
                     labelText: "Tanggal Mulai",
                     suffixIcon: const Icon(Icons.calendar_today),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
                   onTap: () => _pickDate(isStart: true),
-                  validator: (v) =>
-                      (v == null || v.isEmpty) ? "Tanggal mulai wajib dipilih!" : null,
+                  validator: (v) => (v == null || v.isEmpty)
+                      ? "Tanggal mulai wajib dipilih!"
+                      : null,
                 ),
               ),
 
@@ -151,12 +164,19 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   decoration: InputDecoration(
                     labelText: "Tanggal Selesai",
                     suffixIcon: const Icon(Icons.calendar_today),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
                   onTap: () => _pickDate(isStart: false),
                   validator: (v) {
-                    if (v == null || v.isEmpty) return "Tanggal selesai wajib dipilih!";
-                    if (_startDate != null && _endDate != null && _endDate!.isBefore(_startDate!)) {
+                    if (v == null || v.isEmpty) {
+                      return "Tanggal selesai wajib dipilih!";
+                    }
+
+                    if (_startDate != null &&
+                        _endDate != null &&
+                        _endDate!.isBefore(_startDate!)) {
                       return "Tanggal selesai tidak boleh sebelum tanggal mulai!";
                     }
                     return null;
@@ -172,17 +192,22 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   decoration: InputDecoration(
                     labelText: "Deskripsi Tugas",
                     hintText: "Apa saja tanggung jawab dan kontribusimu?",
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
                   ),
                   onChanged: (v) => setState(() => _description = v),
                   validator: (v) {
-                    if (v == null || v.trim().isEmpty) return "Deskripsi tugas tidak boleh kosong!";
+                    if (v == null || v.trim().isEmpty) {
+                      return "Deskripsi tugas tidak boleh kosong!";
+                    }
+
                     if (v.trim().length > 500) return "Maksimal 500 karakter!";
                     return null;
                   },
                 ),
               ),
-            
+
               // Tombol Simpan
               Align(
                 alignment: Alignment.bottomCenter,
@@ -197,7 +222,9 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                         showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
-                            title: const Text('Pengalaman berhasil ditambahkan!'),
+                            title: const Text(
+                              'Pengalaman berhasil ditambahkan!',
+                            ),
                             content: SingleChildScrollView(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -227,9 +254,9 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                     ),
                   ),
                 ),
-              ),  
-            ],           
-          )
+              ),
+            ],
+          ),
         ),
       ),
     );

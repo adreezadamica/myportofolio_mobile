@@ -184,10 +184,12 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                   ),
                   initialValue: _category,
                   items: _categories.entries
-                      .map((entry) => DropdownMenuItem(
-                            value: entry.key,
-                            child: Text(entry.value),
-                          ))
+                      .map(
+                        (entry) => DropdownMenuItem(
+                          value: entry.key,
+                          child: Text(entry.value),
+                        ),
+                      )
                       .toList(),
                   onChanged: (String? newValue) {
                     setState(() {
@@ -217,7 +219,8 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                     final text = value?.trim() ?? '';
                     if (text.isEmpty) return null;
                     final uri = Uri.tryParse(text);
-                    final valid = uri != null &&
+                    final valid =
+                        uri != null &&
                         (uri.scheme == 'http' || uri.scheme == 'https') &&
                         uri.host.isNotEmpty;
                     return valid ? null : "Format URL tidak valid!";
